@@ -4,6 +4,7 @@ import fileUpload from "express-fileupload";
 import { uploadFileToIPFS, uploadJSONToIPFS } from "./uploadToIPFS.js";
 import { mint } from "./nft-minter.js";
 import "dotenv/config";
+import cors from "cors";
 
 const app = express();
 const port = 3000;
@@ -16,6 +17,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 // 使用fileUpload上传文件
 app.use(fileUpload());
+//跨域
+app.use(cors());
 
 //主页
 app.get("/", (req, res) => {
@@ -28,6 +31,7 @@ app.post("/upload", (req, res) => {
   const title = req.body.title;
   const description = req.body.description;
   const file = req.files.file;
+  const address = req.body.address;
   const fileName = file.name;
   //保存文件到本地
   const filePath = "files/" + fileName;
@@ -39,6 +43,7 @@ app.post("/upload", (req, res) => {
     //上传文件到IPFS并生成CID
     const fileResult = await uploadFileToIPFS(filePath);
     const fileCid = fileResult.cid.toString();
+    console.log(fileCid);
     //上传元数据到IPFS生成元数据的CID
     const metadata = {
       title: title,
@@ -48,10 +53,7 @@ app.post("/upload", (req, res) => {
     const metadataResult = await uploadJSONToIPFS(metadata);
     const metadataCid = metadataResult.cid.toString();
     //调用合约，传入用户地址和元数据CID，在合约上生成NFT
-    await mint(
-      process.env.TEST_ADDRESS,
-      process.env.PREFIX_OF_CID + metadataCid
-    );
+    await mint(address, process.env.PREFIX_OF_CID + metadataCid);
     //返回NFT信息
     res.json({
       message: "Your NFT has been generated",
