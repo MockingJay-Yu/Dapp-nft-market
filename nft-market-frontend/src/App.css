@@ -1,0 +1,134 @@
+/* 假设你的navbar有一个固定的布局或flex布局 */
+.navbar {
+  display: flex;
+  justify-content: space-between; /* 让navbar-brand和navbar-buttons在两端，navbar-links在中间 */
+  align-items: center; /* 垂直居中 */
+  background-color: #333; /* 导航栏背景色 */
+  color: #fff; /* 文本颜色 */
+  padding: 10px; /* 内边距 */
+}
+
+.navbar-links {
+  display: flex;
+  align-items: center; /* 垂直居中 */
+}
+
+.navbar-link {
+  text-decoration: none;
+  color: inherit; /* 继承父元素的颜色 */
+  margin-right: 20px; /* 增加链接之间的间距 */
+  /* 其他你想要的样式 */
+}
+
+.navbar-link:last-child {
+  margin-right: 0; /* 最后一个链接不需要额外的间距 */
+}
+
+.link-text {
+  /* 链接文本的样式 */
+  font-size: 16px;
+  /* 你可以添加更多符合整体风格的样式，比如字体、字重等 */
+  font-family: "Arial", sans-serif; /* 示例字体 */
+  font-weight: 400; /* 示例字重 */
+  transition: color 0.3s ease; /* 示例过渡效果 */
+}
+
+.link-text:hover {
+  color: #4caf50; /* 链接点击时的颜色变化 */
+}
+
+.connect-wallet-button {
+  /* 连接钱包按钮的样式 */
+  background-color: #4caf50; /* 默认绿色背景 */
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* 添加过渡效果 */
+}
+
+.connect-wallet-button:active {
+  /* 当按钮被按下时的样式 */
+  background-color: #40944e; /* 深一点的绿色背景，符合整体风格 */
+}
+
+/*以下是MyNft页面样式*/
+.my-nft {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.nft-item {
+  border: 1px solid #ccc;
+  margin: 10px;
+  padding: 10px;
+  flex-basis: calc(33.33% - 20px);
+  box-sizing: border-box;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.nft-image {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+}
+
+.nft-button {
+  display: block;
+  margin-top: 10px;
+}
+
+/*detail样式*/
+.nft-detail {
+  display: flex;
+  flex-direction: row; /* 修改为行方向 */
+  justify-content: space-between; /* 修改为两端对齐，子元素之间的间距相等 */
+  align-items: center;
+  width: 40%;
+  height: 120%; /* 增加40%的高度 */
+  margin: 0 auto;
+  border: 1px solid #ccc;
+  padding: 100px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.nft-image {
+  display: flex; /* 添加flex布局 */
+  align-items: center; /* 垂直居中 */
+}
+
+.nft-image img {
+  width: 200%; /* 增加50%的宽度 */
+  height: auto;
+  margin-right: 20px; /* 添加右边距 */
+}
+
+.nft-info {
+  text-align: center;
+}
+
+.btn {
+  background-color: #4caf50; /* 设置背景色 */
+  color: white; /* 设置文字颜色 */
+  border: none; /* 移除边框 */
+  padding: 8px 15px; /* 调整内边距以改变按钮大小 */
+  text-align: center; /* 文字居中 */
+  text-decoration: none; /* 移除下划线 */
+  display: inline-block;
+  font-size: 11px; /* 调整字体大小以改变按钮大小 */
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.btn:active {
+  background-color: #45a049; /* 点击时的背景色 */
+}
