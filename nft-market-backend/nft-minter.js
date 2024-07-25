@@ -14,7 +14,4 @@ export async function mint(to, uri) {
   const txResponse = await contract.safeMint(to, uri);
   const reciept = await txResponse.wait();
   console.log(reciept);
-
-  const balanceOf = await contract.balanceOf(to);
-  console.log(balanceOf);
 }

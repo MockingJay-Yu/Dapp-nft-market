@@ -8,9 +8,7 @@ const MyNFT = ({ address }) => {
 
   useEffect(() => {
     const fetchNFTs = async () => {
-      console.log(address);
       const length = await balanceOf(address);
-      console.log(length);
       if (length === 0) {
         return;
       }
