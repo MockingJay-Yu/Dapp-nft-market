@@ -83,7 +83,7 @@ contract NftMarket is IERC721Receiver {
         external
         returns (bytes4)
     {
-        require(_operator == address(NFTM), "Only the ERC721 contract can call this function");
+        require(msg.sender == address(NFTM), "Only the ERC721 contract can call this function");
         uint256 _price = toUint256(_data, 0);
         require(_price > 0, "Price can not be zero");
 
